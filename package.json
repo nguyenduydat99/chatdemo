@@ -2,7 +2,7 @@
   "name": "next-core-project",
   "version": "1.0.0",
   "private": false,
-  "author": "https://duongnamtruong.com",
+  "author": "dat",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
