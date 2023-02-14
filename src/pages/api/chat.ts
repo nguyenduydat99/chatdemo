@@ -16,14 +16,17 @@ export default async function handler(
     origin: '*',
     optionsSuccessStatus: 200,
   })
+  const sendMessage = () => {
+    mes.push(req.body.events?.[0].message)
+    client
+      .pushMessage(req.body.events?.[0]?.source.userId, {
+        type: 'text',
+        text: 'From DigiHub',
+      })
+      .then(() => {})
+      .catch(() => {})
+  }
+  req.body.events?.[0]?.message && sendMessage
 
-  req.body.events?.[0]?.message && mes.push(req.body.events?.[0].message)
-  client
-    .pushMessage(req.body.events?.[0]?.source.userId, {
-      type: 'text',
-      text: 'From DigiHub',
-    })
-    .then(() => {})
-    .catch(() => {})
   res.status(200).json({ mes: mes })
 }
